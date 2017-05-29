@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import BaseConsoleApplication from "./BaseConsoleApplication";
 import ConsoleLogger from "../infrastructure/logger/ConsoleLogger";
 import JavaScriptCodeGenerator from "../infrastructure/codeGeneration/JavaScriptCodeGenerator";
