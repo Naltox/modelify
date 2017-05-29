@@ -1,0 +1,21 @@
+{
+  "name": "modelify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./build/test/Run.js",
+    "build": "./node_modules/.bin/tsc --p ./tsconfig.json",
+    "prepublish": "./node_modules/.bin/tsc --p ./tsconfig.json"
+  },
+  "author": "Narek Abovyan <xeroxaltox@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^7.0.18",
+    "typescript": "^2.3.2",
+    "typings": "^2.1.0"
+  },
+  "bin": {
+    "modelify": "./build/presentation/ModelifyApplication.js"
+  }
+}
