@@ -18,7 +18,7 @@ This will install Modelify globally so that it may be run from the command line.
 modelify -lang=lang_name -i=/path/to/your.json -o=/path/to/out/dir
 ```
 
-`lang_name` Output models language
+`lang_name` Output models language (js or ts or swift)
 
 `/path/to/your.json` Path to some json
 
