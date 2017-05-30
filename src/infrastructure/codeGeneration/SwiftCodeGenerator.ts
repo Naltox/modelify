@@ -67,7 +67,7 @@ export default class SwiftCodeGenerator implements CodeGenerator {
         let code = new SourceCode()
 
         code.add(`public static func deserialize(raw: [String: Any]?) -> ${scheme.name}? {`)
-        code.add(`guard let raw = raw as [String: Any]! else {`, 1)
+        code.add(`guard let raw = raw else {`, 1)
         code.add(`return nil`, 2)
         code.add(`}`, 1)
         code.add('')
@@ -140,7 +140,7 @@ export default class SwiftCodeGenerator implements CodeGenerator {
             return type.name + `${!withoutUndefined ? '?' : ''}`
 
         if (type instanceof VectorType) {
-            return '[' + this.renderType(type.item) + `]${!withoutUndefined ? '?' : ''}`
+            return '[' + this.renderNonOptionalType(type.item) + `]${!withoutUndefined ? '?' : ''}`
         }
 
         throw new Error('UNSUPPORTED TYPE' + JSON.stringify(type))
@@ -180,7 +180,7 @@ export default class SwiftCodeGenerator implements CodeGenerator {
         let code = ''
 
         if (type instanceof VectorType)
-            code += `${value}?.map({${this.renderVectorDeserialize('$0', type.item)}})`
+            code += `${value}?.flatMap({${this.renderVectorDeserialize('$0', type.item)}})`
         else if (type instanceof CustomType)
             code += `${type.name}.deserialize(raw: ${value} as? [String: Any])`
         else
@@ -195,7 +195,7 @@ export default class SwiftCodeGenerator implements CodeGenerator {
         if (type instanceof VectorType)
             code += `${value}.map({${this.renderVectorSerialize('$0', type.item)}})`
         else if (type instanceof CustomType)
-            code += `${value}?.serialize()`
+            code += `${value}.serialize()`
         else
             code += value
 
