@@ -2,7 +2,7 @@
 
 # Modelify
 
-Modelify is a tool that created models from JSON.
+Modelify is a tool that creates models from JSON.
 
 ## Installation
 

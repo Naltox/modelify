@@ -144,6 +144,12 @@ export default class JSONSchemeGenerator extends SchemeGenerator {
             return true
 
         if (
+            firstType instanceof AnyType &&
+            secondType instanceof AnyType
+        )
+            return true
+
+        if (
             firstType instanceof VectorType &&
             secondType instanceof VectorType
         ) {
